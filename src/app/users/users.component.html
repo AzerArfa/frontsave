@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Liste de utilisateurs</h1>
+      </div>
+    </div>
+
+  <div id="users">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <input class="search form-control" placeholder="Search" #searchTerm (keyup)="onKeyUp(searchTerm.value)"/>
+          <a href="/addUser"><img src="../../assets/img/add.png" width="40" height="40"/>
+
+    </a>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="card shadow mb-4">
+    <div class="card-body">
+    <table class="table table-striped">
+    <tr><th></th> <th><h4>Username</h4></th><th><h4>Email</h4></th><th><h4>Societe</h4></th><th><h4>Date Création</h4></th> <h4><th>Roles</th></h4></tr>
+    <tbody *ngFor="let user of users">
+    <tr >
+    <!-- <td>{{user.idUser}}</td> -->
+    <td><img src="https://gravatar.com/avatar/ff3265b13420b9d301d0005ef494385a?s=80&d=https://codepen.io/assets/avatars/user-avatar-80x80-bdcd44a3bfb9a5fd01eb8b86f9e033fa1a9897c3a15b33adfc2649a002dab1b6.png" class="pull-left photo"></td>
+    <td>
+        <h5 class="list-group-item-heading name">{{user.name}} </h5>
+        
+    </td>
+    <td>{{user.email}}</td>
+    <td>{{user.societe}}</td>
+    <td>{{user.creationDate | date:'dd/MM/yyyy - HH:mm:ss' }}</td>
+    <td>{{ getRoleNames(user) }}</td>
+    <td><a class="btn btn-success" [routerLink]="['/updateUser',user.id]"><img src="../../assets/img/edit.png" width="28" height="28"/></a></td>
+    <td><a  class="btn btn-danger" (click)="supprimerUser(user.id)"><img src="../../assets/img/delete.png" width="28" height="28"/></a></td>
+    </tr>
+    </tbody>
+    </table>
+    </div>
+    </div>
+    </div>
