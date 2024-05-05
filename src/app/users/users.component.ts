@@ -49,15 +49,29 @@ getRoleNames(user: User): string {
 }
 
 onKeyUp(value: string) {
-  this.userService.rechercherParNom(value).subscribe(
-    data => {
-      this.users = data; // Assuming 'users' is the array that stores the user data displayed in the HTML.
-    },
-    error => {
-      console.error('Error retrieving users:', error);
-    }
-  );
+  if (value === '') {
+    // If search input is empty, retrieve all users
+    this.userService.listeUsers().subscribe(
+      data => {
+        this.users = data; // Assuming 'users' is the array that stores the user data displayed in the HTML.
+      },
+      error => {
+        console.error('Error retrieving all users:', error);
+      }
+    );
+  } else {
+    // If search input is not empty, perform search by name
+    this.userService.rechercherParNom(value).subscribe(
+      data => {
+        this.users = data;
+      },
+      error => {
+        console.error('Error retrieving users:', error);
+      }
+    );
+  }
 }
+
 
 
 

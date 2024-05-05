@@ -23,7 +23,7 @@ export class ProfileComponent implements OnInit{
   }
 
   loadCurrentUser(): void {
-    const userId = 'a9692b26-6deb-441f-af48-0eea2fabbb56' ; // Example user ID, replace with the actual user ID
+    const userId = '14466175-36c7-4a26-9832-f945d938bbc2' ; // Example user ID, replace with the actual user ID
     this.userService.getUserById(userId)
       .subscribe(user => {
         this.currentUser = user;
